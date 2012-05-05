@@ -1,7 +1,7 @@
 {
     "name": "symfony-cmf/multilang-content-bundle",
     "type": "symfony-bundle",
-    "description": "Symfony CMF Block Bundle",
+    "description": "Symfony CMF Multilang Content Bundle",
     "keywords": ["Symfony CMF", "i18n"],
     "homepage": "http://cmf.symfony.com",
     "license": "MIT",
