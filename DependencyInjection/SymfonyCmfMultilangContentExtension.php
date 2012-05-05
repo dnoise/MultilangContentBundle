@@ -16,15 +16,9 @@ class SymfonyCmfMultilangContentExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
-        // TODO: use the configuration mechanism to validate the configuration
+        $config = $this->processConfiguration(new Configuration(), $configs);
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('config.xml');
-
-        $config = array();
-        foreach ($configs as $conf) {
-            $config = array_replace($config, $conf);
-        }
 
         $alias = $this->getAlias();
         foreach ($config as $key => $value) {
@@ -32,5 +26,8 @@ class SymfonyCmfMultilangContentExtension extends Extension
         }
 
         $loader->load('services.xml');
+
+        $languageSelectorController = $container->getDefinition('symfony_cmf_multilang_content.language_selector_controller');
+        $languageSelectorController->replaceArgument(1, $config['document_manager_name']);
     }
 }

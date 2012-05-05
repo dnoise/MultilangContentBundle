@@ -28,7 +28,7 @@ class MultilangLanguageSelectRoute extends Route implements RouteAwareInterface
     public function __construct()
     {
         parent::__construct();
-        $this->setDefault('_controller', 'symfony_cmf_multilang_content.languageSelectorController:defaultLanguageAction');
+        $this->setDefault('_controller', 'symfony_cmf_multilang_content.language_selector_controller:defaultLanguageAction');
     }
 
     /**
@@ -39,6 +39,7 @@ class MultilangLanguageSelectRoute extends Route implements RouteAwareInterface
         if (is_array($this->routes)) {
             return $this->routes;
         }
+
         return $this->routes->toArray();
     }
 

@@ -2,7 +2,7 @@
 
 namespace Symfony\Cmf\Bundle\MultilangContentBundle\Controller;
 
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Bundle\PHPCRBundle\ManagerRegistry;
 use Doctrine\ODM\PHPCR\Translation\LocaleChooser\LocaleChooserInterface;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +20,8 @@ use Symfony\Cmf\Component\Routing\RouteAwareInterface;
  */
 class LanguageSelectorController
 {
-    protected $om;
+    protected $manager;
+    protected $dm;
     protected $templating;
     protected $router;
     /**
@@ -28,14 +29,16 @@ class LanguageSelectorController
      */
     protected $chooser;
     /**
-     * @param \Doctrine\Common\Persistence\ObjectManager $om
+     * @param \Doctrine\Bundle\PHPCRBundle\ManagerRegistry $manager
+     * @param string $documentManagerName
      * @param \Symfony\Bundle\FrameworkBundle\Templating\EngineInterface $templating
      * @param \Symfony\Component\Routing\RouterInterface $router
      * @param \Doctrine\ODM\PHPCR\Translation\LocaleChooser\LocaleChooserInterface $chooser
      */
-    public function __construct(ObjectManager $om, EngineInterface $templating, RouterInterface $router, LocaleChooserInterface $chooser)
+    public function __construct(ManagerRegistry $manager, $documentManagerName, EngineInterface $templating, RouterInterface $router, LocaleChooserInterface $chooser)
     {
-        $this->om = $om;
+        $this->manager = $manager;
+        $this->dm = $this->manager->getManager($documentManagerName);
         $this->templating = $templating;
         $this->router = $router;
         $this->chooser = $chooser;
@@ -57,7 +60,7 @@ class LanguageSelectorController
                 return new Response();
             }
 
-            $content = $this->om->find(null, $id);
+            $content = $this->dm->find(null, $id);
             foreach ($available as $lang) {
                 $languageUrls[$lang]['fullname'] = \Locale::getDisplayLanguage($lang, $lang);
                 $languageUrls[$lang]['url'] = $this->router->generate('', array('_locale' => $lang, 'content' => $content));

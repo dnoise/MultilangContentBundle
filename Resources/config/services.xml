@@ -12,9 +12,9 @@
 
     <services>
 
-        <service id="symfony_cmf_multilang_content.languageSelectorController" class="Symfony\Cmf\Bundle\MultilangContentBundle\Controller\LanguageSelectorController">
-            <argument type="service" id="doctrine_phpcr.odm.default_document_manager" />
-            <!--FIXME: how to use a parameter to specify a service as parameter instead of passing the default om? -->
+        <service id="symfony_cmf_multilang_content.language_selector_controller" class="Symfony\Cmf\Bundle\MultilangContentBundle\Controller\LanguageSelectorController">
+            <argument type="service" id="doctrine_phpcr" />
+            <argument />
             <argument type="service" id="templating" />
             <argument type="service" id="router" />
             <argument type="service" id="doctrine_phpcr.odm.locale_chooser" />
