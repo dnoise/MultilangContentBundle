@@ -22,8 +22,10 @@ class MultilangLanguageSelectRoute extends Route implements RouteAwareInterface
     protected $routes;
 
     /**
-     * Default the controller to explicitly reference the LanguageSelectorController
+     * Default the controller to explicitly reference the LanguageSelectorController service
      *
+     * If you need something different, call setDefault('_controller' ... after creating
+     * the object.
      */
     public function __construct()
     {
