@@ -30,4 +30,22 @@ class MultilangMenuItem extends MenuItem {
     /** @PHPCRODM\Uri(translated=true) */
     protected $uri;
 
+    /**
+     * @return string the loaded locale of this menu item
+     */
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
+    /**
+     * Set the locale this menu item should be. When doing a flush,
+     * this will have the translated fields be stored as that locale.
+     *
+     * @param string $locale the locale to use for this menu item
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+    }
 }
