@@ -14,7 +14,7 @@ use Knp\Menu\NodeInterface;
  *
  * The children of this route must carry all locales that should be available.
  *
- * @PHPCRODM\Document(repositoryClass="Symfony\Cmf\Bundle\RoutingExtraBundle\Document\RouteRepository")
+ * @PHPCRODM\Document
  */
 class MultilangLanguageSelectRoute extends Route implements RouteAwareInterface
 {
