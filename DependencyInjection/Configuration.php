@@ -39,8 +39,7 @@ class Configuration implements ConfigurationInterface
                     ->useAttributeAsKey('name')
                     ->defaultValue(array(
                         'de' => array('fullname' => 'Deutsch', 'completion' => 'utsch'),
-//                        'fr' => array('fullname' => 'Franais', 'completion' => 'anais'),
-                        'fr' => array('fullname' => 'Francais', 'completion' => 'ancais'),
+                        'fr' => array('fullname' => 'FranÃ§ais', 'completion' => 'anÃ§ais'),
                         'en' => array('fullname' => 'English', 'completion' => 'glish'),
                         'it' => array('fullname' => 'Italiano', 'completion' => 'aliano'),
                     ))
