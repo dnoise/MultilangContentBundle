@@ -4,6 +4,7 @@ namespace Symfony\Cmf\Bundle\MultilangContentBundle\Document;
 
 use Symfony\Cmf\Bundle\RoutingExtraBundle\Document\Route;
 use Symfony\Cmf\Component\Routing\RouteAwareInterface;
+use Symfony\Cmf\Component\Routing\RouteObjectInterface;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCRODM;
 use Knp\Menu\NodeInterface;
@@ -24,13 +25,13 @@ class MultilangLanguageSelectRoute extends Route implements RouteAwareInterface
     /**
      * Default the controller to explicitly reference the LanguageSelectorController service
      *
-     * If you need something different, call setDefault('_controller' ... after creating
+     * If you need something different, call setDefault(RouteObjectInterface::CONTROLLER_NAME ... after creating
      * the object.
      */
     public function __construct()
     {
         parent::__construct();
-        $this->setDefault('_controller', 'symfony_cmf_multilang_content.language_selector_controller:defaultLanguageAction');
+        $this->setDefault(RouteObjectInterface::CONTROLLER_NAME, 'symfony_cmf_multilang_content.language_selector_controller:defaultLanguageAction');
     }
 
     /**
