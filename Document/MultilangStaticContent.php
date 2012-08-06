@@ -8,30 +8,32 @@ use Symfony\Cmf\Component\Routing\RouteAwareInterface;
 use Symfony\Cmf\Bundle\ContentBundle\Document\StaticContent;
 
 /**
- * @PHPCRODM\Document(translator="child")
+ * @PHPCRODM\Document(translator="child",referenceable=true)
  */
 class MultilangStaticContent extends StaticContent
 {
     /**
      * @PHPCRODM\Locale
      */
-    public $locale;
+    protected $locale;
 
     /**
      * @Assert\NotBlank
      * @PHPCRODM\String(translated=true)
      */
-    public $name;
-
-    /**
-     * @Assert\NotBlank
-     * @PHPCRODM\String(translated=true)
-     */
-    public $title;
+    protected $title;
 
     /**
      * @PHPCRODM\String(translated=true)
      */
-    public $body;
+    protected $body;
 
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+    }
 }
