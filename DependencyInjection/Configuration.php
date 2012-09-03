@@ -45,6 +45,8 @@ class Configuration implements ConfigurationInterface
                     ))
                     ->prototype('scalar')->end()
                 ->end()
+                ->scalarNode('use_sonata_admin')->defaultValue('auto')->end()
+                ->scalarNode('content_basepath')->defaultNull()->end()
             ->end()
         ;
 

@@ -27,7 +27,29 @@ class SymfonyCmfMultilangContentExtension extends Extension
 
         $loader->load('services.xml');
 
+        if ($config['use_sonata_admin']) {
+            $this->loadSonataAdmin($config, $loader, $container);
+        }
+
         $languageSelectorController = $container->getDefinition('symfony_cmf_multilang_content.language_selector_controller');
         $languageSelectorController->replaceArgument(1, $config['document_manager_name']);
+    }
+
+    public function loadSonataAdmin($config, XmlFileLoader $loader, ContainerBuilder $container)
+    {
+        if ('auto' === $config['use_sonata_admin'] && !class_exists('Sonata\\AdminBundle\\Admin\\Admin')) {
+            return;
+        }
+
+        $loader->load('multilang-content-admin.xml');
+        $contentBasepath = $config['content_basepath'];
+        if (null === $contentBasepath) {
+            if ($container->hasParameter('symfony_cmf_core.content_basepath')) {
+                $contentBasepath = $container->getParameter('symfony_cmf_core.content_basepath');
+            } else {
+                $contentBasepath = '/cms/content';
+            }
+        }
+        $container->setParameter($this->getAlias() . '.content_basepath', $contentBasepath);
     }
 }
