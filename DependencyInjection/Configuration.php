@@ -45,7 +45,15 @@ class Configuration implements ConfigurationInterface
                     ))
                     ->prototype('scalar')->end()
                 ->end()
-                ->scalarNode('use_sonata_admin')->defaultValue('auto')->end()
+                ->scalarNode('use_sonata_admin')
+                    ->defaultValue('auto')
+                    ->validate()
+                        ->ifTrue(function($v){
+                            return !is_bool($v) && $v !== 'auto';
+                        })
+                        ->thenInvalid("This configuration allows only the values true, false or 'auto'")
+                    ->end()
+                ->end()
                 ->scalarNode('content_basepath')->defaultNull()->end()
             ->end()
         ;
