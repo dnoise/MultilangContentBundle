@@ -18,6 +18,12 @@
         "doctrine/phpcr-bundle": "1.0.*",
         "doctrine/phpcr-odm": "1.0.*"
     },
+    "require-dev": {
+        "sonata-project/doctrine-phpcr-admin-bundle": "1.0.*"
+    },
+    "suggests": {
+        "sonata-project/doctrine-phpcr-admin-bundle": "1.0.*"
+    },
     "autoload":{
         "psr-0":{
             "Symfony\\Cmf\\Bundle\\MultilangContentBundle": ""
