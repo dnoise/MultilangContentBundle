@@ -19,9 +19,6 @@ use Knp\Menu\NodeInterface;
  */
 class MultilangLanguageSelectRoute extends Route implements RouteAwareInterface
 {
-    /** @PHPCRODM\Children */
-    protected $routes;
-
     /**
      * Default the controller to explicitly reference the LanguageSelectorController service
      *
@@ -39,11 +36,11 @@ class MultilangLanguageSelectRoute extends Route implements RouteAwareInterface
      */
     public function getRoutes()
     {
-        if (is_array($this->routes)) {
-            return $this->routes;
+        if (is_array($this->chilren)) {
+            return $this->children;
         }
 
-        return $this->routes->toArray();
+        return $this->children->toArray();
     }
 
     public function getRouteContent()
