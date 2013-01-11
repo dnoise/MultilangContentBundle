@@ -8,7 +8,7 @@
     "authors": [
         {
             "name": "Symfony CMF Community",
-            "homepage": "https://github.com/symfony-cmf/MultilangContentBundle/contributors"
+            "homepage": "https://github.com/dnoise/MultilangContentBundle/contributors"
         }
     ],
     "minimum-stability": "dev",
