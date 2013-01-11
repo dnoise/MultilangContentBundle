@@ -1,5 +1,5 @@
 {
-    "name": "symfony-cmf/multilang-content-bundle",
+    "name": "dnoise/multilang-content-bundle",
     "type": "symfony-bundle",
     "description": "Symfony CMF Multilang Content Bundle",
     "keywords": ["Symfony CMF", "i18n"],
